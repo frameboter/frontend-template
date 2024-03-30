@@ -24,5 +24,6 @@ jobs:
           image: ${{env.OWNER_LC}}${{ github.event.repository.name }}
           tags: nightly
           registry: ghcr.io
+          dockerfile: ./Dockerfile
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
