@@ -21,7 +21,7 @@ jobs:
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: ${{ github.repository_owner }}${{ github.event.repository.name }}
+          image: ${{env.OWNER_LC}}${{ github.event.repository.name }}
           tags: nightly
           registry: ghcr.io
           dockerfile: Dockerfile
