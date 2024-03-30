@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {KeycloakService} from "keycloak-angular";
-import {jwtDecode, JwtPayload} from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class UserService {
   }
 
 
-  private async getToken(): Promise<JwtPayload> {
+  private async getToken(): Promise<any> {
     const token = await this.keycloak.getToken();
     return jwtDecode(token);
   }
