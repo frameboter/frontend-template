@@ -14,5 +14,5 @@ FROM nginx:alpine
 # Copy angular target folder (dist) into the static hosting path of nginx
 COPY --from=node /app/dist/frontend /usr/share/nginx/html
 # Copy nginx config into correct folder
-COPY /nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
