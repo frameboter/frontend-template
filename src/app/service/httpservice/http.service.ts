@@ -12,7 +12,7 @@ export class HttpService {
 
   constructor(private httpClient: HttpClient) {
     this.domain = "." + environment.baseDomain + "/api/";
-    this.prefix = environment.protocol + "://" + environment.servicePrefix;
+    this.prefix = environment.httpProtocol + "://" + environment.servicePrefix;
   }
 
   public sendPostRequest(service: string, path: string, body: any): Observable<any> {
