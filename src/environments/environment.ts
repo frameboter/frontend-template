@@ -1,5 +1,5 @@
 export const environment = {
   baseDomain: "",
-  protocol: "",
+  httpProtocol: "",
   servicePrefix: ""
 };

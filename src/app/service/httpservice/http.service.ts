@@ -7,16 +7,17 @@ import {environment} from "../../../environments/environment";
   providedIn: 'root'
 })
 export class HttpService {
-  private domain: string;
-  private prefix: string;
+  private readonly domain: string;
+  private readonly prefix: string;
 
   constructor(private httpClient: HttpClient) {
     this.domain = "." + environment.baseDomain + "/api/";
-    this.prefix = environment.protocol + "://" + environment.servicePrefix;
+    this.prefix = environment.httpProtocol + "://" + environment.servicePrefix;
   }
 
   public sendPostRequest(service: string, path: string, body: any): Observable<any> {
     let url = this.prefix + service + this.domain + path;
+    console.log("Calling url: " + url)
     return this.httpClient.post(url, body)
   }
 
