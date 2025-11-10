@@ -9,9 +9,8 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - develop
+  release:
+    types: [ created ]
     
     
 jobs:
@@ -28,7 +27,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
           image: ${{ github.event.repository.name }}
-          tags: nightly
+          tags: latest
           registry: ghcr.io
           dockerfile: Dockerfile
           username: ${{ github.repository_owner }}
