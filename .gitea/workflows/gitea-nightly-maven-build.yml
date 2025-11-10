@@ -1,0 +1,26 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+
+name: Stable
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+          
+      - name: Build & push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: ${{ gitea.repository_owner }}/${{ gitea.event.repository.name }}
+          tags: nightly
+          registry: gitea.roboter5123.com
+          dockerfile: NightlyDockerfile
+          username: ${{ gitea.repository_owner }}
+          password: ${{ secrets.ACCESS_TOKEN }}
