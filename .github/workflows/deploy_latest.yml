@@ -9,12 +9,17 @@
 name: Deploy
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - develop
+    
+    
 
 jobs:
   deploy:
-    permissions: write-all
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,4 +33,4 @@ jobs:
           registry: ghcr.io
           dockerfile: Dockerfile
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.ACCESS_TOKEN }}
